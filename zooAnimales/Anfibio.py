@@ -1,18 +1,40 @@
-from zooAnimales.Animal import Animal
-
+from zooAnimales.animal import Animal
 class Anfibio(Animal):
-    _Anfibio = []
-    def __init__(self, Anfibio, ranas, salamandras, colorPiel, venenoso):
-        self._listado = Anfibio
-        self.ranas = ranas
-        self.salamandras = salamandras
+    _listado = []
+    ranas = 0
+    salamandras = 0
+
+    def __init__(self, nombre, edad, gabitat, genero, colorPiel, venenoso):
+        super().__init__(nombre, edad, habitat, genero)
         self._colorPiel = colorPiel
         self._venenoso = venenoso
-        
-    def cantidadAnfibios(self):
+        Anfibio._listado.append(self)
+
+    def isVenenoso(self):
+        return self._venenoso
     
-    def movimiento(self):
+    def setVenenoso(self, venenoso):
+        self._venenoso = venenoso
+        
+    def getColorPiel(self):
+        return self._colorPiel
+    
+    def setColorPiel(self, colorPiel):
+        self._colorPiel = colorPiel
 
-    def crearRana(self):
-
-    def crearSalamandra(self):
+    def movimiento():
+        return "saltar"
+    
+    @staticmethod
+    def cantidadAnfibios():
+        return len(Anfibio._listado)
+    
+    @classmethod
+    def crearRana(cls, nombre, edad, genero):
+        cls(nombre, edad, "selva", genero, "rojo", True)
+        cls.ranas += 1
+    
+    @classmethod
+    def crearSalamandra(cls, nombre, edad, genero):
+        cls(nombre, edad, "selva", genero, "negro y amarillo", False)
+        cls.salamandras += 1
